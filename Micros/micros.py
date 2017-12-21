@@ -24,6 +24,11 @@ MinYearsLife=2
 MaleNames=["Alexandre","Andre","Carlos","Miguel","Joao","Pedro","Diogo","Jose","Jorge","Fabio","Filipe"]
 FemaleNames=["Ana","Mariana","Sofia","Carolina","Susana","Sonia","Adriana","Mara","Marta","Cassandra","Maria"]
 
+def writeLog(text):
+	f=open(expanduser("~")+"/log.txt","a+")
+	f.write("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+" | "+text+"\n")
+	f.close()
+
 def micLife():
 	lastSecond=-0
 	lastYear=-1
@@ -33,7 +38,7 @@ def micLife():
 	work=""
 	digitalID=str(uuid.uuid4())
 	myBody=digitalID+".micro"
-	currentPath=home = expanduser("~")+"/MicroVile"
+	currentPath=expanduser("~")+"/MicroVile"
 	home=""
 	life=randint(MinYearsLife,MaxYearsLife)
 	age=0
@@ -54,7 +59,7 @@ def micLife():
 		name=MaleNames[randint(0,len(MaleNames)-1)]
 	else:
 		name=FemaleNames[randint(0,len(FemaleNames)-1)]
-	print(name+" nasceu!")
+	writeLog(name+" nasceu!")
 	
 	f=open(currentPath+"/"+digitalID+".micro","w")
 	f.write(name+"\n"+digitalID+"\n"+str(age)+"\n"+str(sex)+"\n"+work+"\n"+home)
@@ -65,7 +70,7 @@ def micLife():
 		if life==0:
 			currentLifeState=2
 			os.remove(currentPath+"/"+myBody)
-			print(name+" Morreu!")
+			writeLog(name+" Morreu!")
 			break
 		if lastSecond!=Seconds:
 			lastSecond=Seconds
@@ -87,7 +92,7 @@ for i in range(0,randint(1,Population)):
 	mic.start()
 
 while(True):
-	#os.system("clear")
+	os.system("clear")
 	# TIME
 	Seconds=Seconds+1
 	if Seconds>59:
@@ -117,5 +122,5 @@ while(True):
 		Year=Year+1
 	
 	#RENDER
-	#print("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year))
+	print("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year))
 	time.sleep(timeSpeed)
