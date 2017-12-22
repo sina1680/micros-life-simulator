@@ -132,5 +132,6 @@ while(True):
 	print("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+"   POPULATION:"+Population)
 	time.sleep(timeSpeed)
 	if(Population==0):
-		writeLog("FIM da simulacao, Todos morreram"):
+		writeLog("FIM da simulacao, Todos morreram")
+		break
 		
