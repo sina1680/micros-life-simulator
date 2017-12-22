@@ -42,8 +42,8 @@ def micLife():
 	home=""
 	life=randint(MinYearsLife,MaxYearsLife)
 	age=0
-	energy=randint(10,100)
-	eat=randint(0,100)
+	energy=randint(10000,84960)
+	eat=randint(10000,84960)
 	studyLevel=0
 	birthday=str(Day)+"/"+str(Mounth)+"/"+str(Year)
 	
@@ -75,6 +75,7 @@ def micLife():
 		if lastSecond!=Seconds:
 			lastSecond=Seconds
 			energy=energy-1
+			eat=eat-1;
 			if energy<1:
 				currentLifeState=1
 			if currentLifeState==1:
@@ -84,6 +85,8 @@ def micLife():
 		if lastYear!=Year:
 			lastYear=Year
 			life=life-1
+		if(eat<1):
+			life=0
 			
 			
 	
