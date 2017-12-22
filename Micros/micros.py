@@ -73,6 +73,7 @@ def micLife():
 			currentLifeState=2
 			os.remove(currentPath+"/"+myBody)
 			writeLog(name+" Morreu! MOTIVO:"+deadMotif)
+			Population=Population-1
 			break
 		if lastSecond!=Seconds:
 			lastSecond=Seconds
@@ -92,7 +93,7 @@ def micLife():
 			deadMotif="Fome"
 			
 			
-	
+writeLog("Inicio da simulacao"):
 for i in range(0,randint(1,Population)):
 	mic = threading.Thread(target=micLife)
 	mic.start()
@@ -130,3 +131,6 @@ while(True):
 	#RENDER
 	print("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year))
 	time.sleep(timeSpeed)
+	if(Population==0):
+		writeLog("FIM da simulacao, Todos morreram"):
+		
