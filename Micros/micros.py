@@ -30,6 +30,7 @@ def writeLog(text):
 	f.close()
 
 def micLife():
+	deadMotif="";
 	lastSecond=-0
 	lastYear=-1
 	time.sleep(randint(0,1000))
@@ -68,9 +69,10 @@ def micLife():
 
 	while(currentLifeState!=2):
 		if life==0:
+			# DEAD
 			currentLifeState=2
 			os.remove(currentPath+"/"+myBody)
-			writeLog(name+" Morreu!")
+			writeLog(name+" Morreu! MOTIVO:"+deadMotif)
 			break
 		if lastSecond!=Seconds:
 			lastSecond=Seconds
@@ -87,6 +89,7 @@ def micLife():
 			life=life-1
 		if(eat<1):
 			life=0
+			deadMotif="Fome"
 			
 			
 	
