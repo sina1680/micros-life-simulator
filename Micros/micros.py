@@ -44,7 +44,7 @@ def micLife():
 	life=randint(MinYearsLife,MaxYearsLife)
 	age=0
 	energy=randint(10000,84960)
-	eat=randint(10000,84960)
+	eat=randint(10000,84960)*7
 	studyLevel=0
 	birthday=str(Day)+"/"+str(Mounth)+"/"+str(Year)
 	
@@ -76,15 +76,17 @@ def micLife():
 			Population=Population-1
 			break
 		if lastSecond!=Seconds:
-			lastSecond=Seconds
-			energy=energy-1
-			eat=eat-1;
 			if energy<1:
 				currentLifeState=1
 			if currentLifeState==1:
 				energy=energy+1
+				eat=eat-1;
 				if energy>99:
 					currentLifeState=0
+			if currentLifeState==2:	
+				lastSecond=Seconds
+				energy=energy-1
+				eat=eat-8;
 		if lastYear!=Year:
 			lastYear=Year
 			life=life-1
@@ -93,7 +95,7 @@ def micLife():
 			deadMotif="Fome"
 			
 			
-writeLog("Inicio da simulacao"):
+writeLog("Inicio da simulacao")
 for i in range(0,randint(1,Population)):
 	mic = threading.Thread(target=micLife)
 	mic.start()
@@ -129,7 +131,7 @@ while(True):
 		Year=Year+1
 	
 	#RENDER
-	print("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+"   POPULATION:"+Population)
+	print("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+"   POPULATION:"+str(Population))
 	time.sleep(timeSpeed)
 	if(Population==0):
 		writeLog("FIM da simulacao, Todos morreram")
