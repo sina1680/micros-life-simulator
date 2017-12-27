@@ -25,7 +25,7 @@ FemaleNames=["Ana","Mariana","Sofia","Carolina","Susana","Sonia","Adriana","Mara
 
 def writeLog(text):
 	f=open(expanduser("~")+"/log.txt","a+")
-	f.write("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+" | "+text+"\n")
+	f.write("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Minutes)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+" | "+text+"\n")
 	f.close()
 
 def micLife():
@@ -83,7 +83,7 @@ def micLife():
 				if energy>99:
 					currentLifeState=0
 			if currentLifeState==2:	
-				lastMinute=Seconds
+				lastMinute=Minutes
 				energy=energy-1
 				eat=eat-8;
 		if lastYear!=Year:
