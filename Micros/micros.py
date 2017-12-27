@@ -42,8 +42,8 @@ def micLife():
 	home=""
 	life=randint(MinYearsLife,MaxYearsLife)
 	age=0
-	energy=randint(10000,84960)
-	eat=randint(10000,84960)*7
+	energy=randint(60,60*24)
+	eat=randint(10,60*4)*7
 	studyLevel=0
 	birthday=str(Day)+"/"+str(Mounth)+"/"+str(Year)
 	
