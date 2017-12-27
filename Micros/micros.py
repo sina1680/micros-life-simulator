@@ -8,7 +8,6 @@ from os.path import expanduser
 # World Status
 Hours=0
 Minutes=0
-Seconds=0
 Day=1
 Mounth=1
 Year=0
@@ -31,7 +30,7 @@ def writeLog(text):
 
 def micLife():
 	deadMotif="";
-	lastSecond=-0
+	lastMinute=-0
 	lastYear=-1
 	time.sleep(randint(0,1000))
 	# Creation ===============================================
@@ -75,7 +74,7 @@ def micLife():
 			writeLog(name+" Morreu! MOTIVO:"+deadMotif)
 			Population=Population-1
 			break
-		if lastSecond!=Seconds:
+		if lastMinute!=Minutes:
 			if energy<1:
 				currentLifeState=1
 			if currentLifeState==1:
@@ -84,7 +83,7 @@ def micLife():
 				if energy>99:
 					currentLifeState=0
 			if currentLifeState==2:	
-				lastSecond=Seconds
+				lastMinute=Seconds
 				energy=energy-1
 				eat=eat-8;
 		if lastYear!=Year:
@@ -103,27 +102,20 @@ for i in range(0,randint(1,Population)):
 while(True):
 	os.system("clear")
 	# TIME
-	Seconds=Seconds+1
-	if Seconds>59:
-		Seconds=0
-		Minutes=Minutes+1
+	Minutes=Minutes+1
 	if Minutes>59:
-		Seconds=0
 		Minutes=0
 		Hours=Hours+1
 	if Hours>23:
-		Seconds=0
 		Minutes=0
 		Hours=0
 		Day=Day+1
 	if Day>31:
-		Second=0
 		Minutes=0
 		Hours=0
 		Day=0
 		Mounth=Mounth+1
 	if Mounth>12:
-		Seconds=0
 		Minutes=0
 		Hours=0
 		Day=0
@@ -131,7 +123,7 @@ while(True):
 		Year=Year+1
 	
 	#RENDER
-	print("TIME:"+str(Hours)+":"+str(Minutes)+":"+str(Seconds)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+"   POPULATION:"+str(Population))
+	print("TIME:"+str(Hours)+":"+str(Minutes)+"    DATE:"+str(Day)+"/"+str(Mounth)+"/"+str(Year)+"   POPULATION:"+str(Population))
 	time.sleep(timeSpeed)
 	if(Population==0):
 		writeLog("FIM da simulacao, Todos morreram")
