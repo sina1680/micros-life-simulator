@@ -82,7 +82,7 @@ def micLife():
 				eat=eat-1;
 				if energy>99:
 					currentLifeState=0
-			if currentLifeState==2:	
+			if currentLifeState==0:	
 				lastMinute=Minutes
 				energy=energy-1
 				eat=eat-8;
