@@ -11,13 +11,14 @@ Minutes=0
 Day=1
 Mounth=1
 Year=0
-Population=randint(0,100)
+Population=1
 #==========================
 
 #World Settings
 timeSpeed=0.0001
 MaxYearsLife=110
-MinYearsLife=2
+MinYearsLife=4
+StartPopulation=randint(2,100)
 #==========================
 
 MaleNames=["Alexandre","Andre","Carlos","Miguel","Joao","Pedro","Diogo","Jose","Jorge","Fabio","Filipe"]
@@ -33,6 +34,7 @@ def micLife():
 	lastMinute=-0
 	lastYear=-1
 	time.sleep(randint(0,1000))
+	Population=Population+1
 	# Creation ===============================================
 	money=0
 	work=""
@@ -43,7 +45,7 @@ def micLife():
 	life=randint(MinYearsLife,MaxYearsLife)
 	age=0
 	energy=randint(60,60*24)
-	eat=randint(10,60*4)*7
+	eat=randint(10,(60*24)*7)
 	studyLevel=0
 	birthday=str(Day)+"/"+str(Mounth)+"/"+str(Year)
 	
@@ -75,6 +77,7 @@ def micLife():
 			Population=Population-1
 			break
 		if lastMinute!=Minutes:
+			lastMinute=Minutes
 			if energy<1:
 				currentLifeState=1
 			if currentLifeState==1:
@@ -95,7 +98,7 @@ def micLife():
 			
 			
 writeLog("Inicio da simulacao")
-for i in range(0,randint(1,Population)):
+for i in range(2,StartPopulation):
 	mic = threading.Thread(target=micLife)
 	mic.start()
 
