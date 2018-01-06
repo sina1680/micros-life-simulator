@@ -19,6 +19,7 @@ timeSpeed=0.0001
 MaxYearsLife=110
 MinYearsLife=4
 StartPopulation=randint(2,100)
+CityName="MicroVile"
 #==========================
 
 MaleNames=["Alexandre","Andre","Carlos","Miguel","Joao","Pedro","Diogo","Jose","Jorge","Fabio","Filipe"]
@@ -40,7 +41,7 @@ def micLife():
 	work=""
 	digitalID=str(uuid.uuid4())
 	myBody=digitalID+".micro"
-	currentPath=expanduser("~")+"/MicroVile"
+	currentPath=expanduser("~")+"/"+CityName
 	home=""
 	life=randint(MinYearsLife,MaxYearsLife)
 	age=0
@@ -98,6 +99,18 @@ def micLife():
 			
 			
 writeLog("Inicio da simulacao")
+print("Inicio da simulacao")
+writeLog("A Criar Cidade")
+print("A Criar Cidade")
+cityPath=expanduser("~")+"/"+CityName
+os.makedirs(cityPath)
+for i in range(1,randint(1,500)):
+	os.makedirs(cityPath+"/Home_"+str(i))
+os.makedirs(cityPath+"/Farm")
+os.makedirs(cityPath+"/cemetery")
+os.makedirs(cityPath+"/hospital")
+print("A criar Micros")
+writeLog("A criar Micros")
 for i in range(2,StartPopulation):
 	mic = threading.Thread(target=micLife)
 	mic.start()
