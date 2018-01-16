@@ -11,7 +11,7 @@ Minutes=0
 Day=1
 Mounth=1
 Year=0
-Population=1
+Population=0
 #==========================
 
 #World Settings
@@ -22,6 +22,8 @@ StartPopulation=randint(2,100)
 CityName="MicroVile"
 #==========================
 
+STOP=False;
+
 MaleNames=["Alexandre","Andre","Carlos","Miguel","Joao","Pedro","Diogo","Jose","Jorge","Fabio","Filipe"]
 FemaleNames=["Ana","Mariana","Sofia","Carolina","Susana","Sonia","Adriana","Mara","Marta","Cassandra","Maria"]
 
@@ -31,10 +33,10 @@ def writeLog(text):
 	f.close()
 
 def micLife():
+	global Population
 	deadMotif="";
 	lastMinute=-0
 	lastYear=-1
-	time.sleep(randint(0,1000))
 	Population=Population+1
 	# Creation ===============================================
 	money=0
@@ -70,6 +72,8 @@ def micLife():
 	#===================================================================
 
 	while(currentLifeState!=2):
+		if(STOP):
+			break
 		if life==0:
 			# DEAD
 			currentLifeState=2
@@ -143,5 +147,6 @@ while(True):
 	time.sleep(timeSpeed)
 	if(Population==0):
 		writeLog("FIM da simulacao, Todos morreram")
+		STOP=True
 		break
 		
